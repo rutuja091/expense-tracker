@@ -30,6 +30,30 @@ const postTransaction = async (req, res) => {
   }
 }
 
+const getTransactions = async (req, res) => {
+    const { userId } = req.query;
+  
+    const user = await User.findById(userId)
+  
+    if(!user){
+      return res.json({
+        success: false,
+        message: `User not found`,
+        data: null
+      })
+    }
+
+    const transactions = await Transaction.find({ user: userId }).sort({ createdAt: -1});
+
+    res.json({
+      success: true,
+      message: `Transactions fetched successfully`,
+      data: transactions
+    })
+  }
+  
+
 export{
-    postTransaction
+    postTransaction,
+    getTransactions
 }
