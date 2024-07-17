@@ -3,34 +3,41 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
+import { postSignup,postLogin } from "./controllers/user.js";
+import{postTransaction} from "./controllers/transation.js"
 
 
-const app=express();
+const app = express();
 app.use(express.json());
 app.use(cors());
 
 //connect to MOngoDB
 
-const connectDB=async()=>{
-    const conn=await mongoose.connect(process.env.MONGODB_URL)
+const connectDB = async () => {
+    const conn = await mongoose.connect(process.env.MONGODB_URL)
 
-    if (conn){
-        console.log(`MOngoDB connected Successfully ✅`);
+    if (conn) {
+        console.log(`MOngoDB connected Successfully...✅`);
     }
 };
 
 connectDB();
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.json({
-        message:`welcome to expense API`
+        message: `welcome to expense API`
     })
 })
 
+app.post("/signup",postSignup )
 
-const PORT = process.env.PORT ||5000;
+app.post("/login",postLogin)
 
-app.listen(PORT,()=>{
+app.post("/transaction",postTransaction)
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`);
 })
 
