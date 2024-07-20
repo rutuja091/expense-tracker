@@ -76,15 +76,15 @@ function AddTransaction() {
         <select className="user-input"
           value={category}
           onChange={(e) => setCategory(e.target.value)}>
-          <option value="food">Food</option>
-          <option value="rent">Rent</option>
-          <option value="utilities">Utilities</option>
-          <option value="transportation">Transportation</option>
-          <option value="entertainment">Entertainment</option>
-          <option value="clothing">Clothing</option>
-          <option value="health">Health</option>
-          <option value="salary">Salary</option>
-          <option value="learning">Learning</option>
+          <option value="food">food</option>
+          <option value="rent">rent</option>
+          <option value="utilities">utilities</option>
+          <option value="transportation">transportation</option>
+          <option value="entertainment">entertainment</option>
+          <option value="clothing">clothing</option>
+          <option value="health">health</option>
+          <option value="salary">salary</option>
+          <option value="learning">learning</option>
         </select>
 
         <button type="button" className="btn-auth" onClick={addTransaction}>

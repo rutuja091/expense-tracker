@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 import { postSignup,postLogin } from "./controllers/user.js";
-import{postTransaction,getTransactions} from "./controllers/transation.js"
+import{postTransaction,getTransactions,deleteTransaction} from "./controllers/transation.js"
 
 
 const app = express();
@@ -36,6 +36,9 @@ app.post("/login",postLogin)
 app.post("/transaction",postTransaction)
 
 app.get("/transactions",getTransactions)
+
+
+app.delete("/transaction/:id", deleteTransaction)
 
 const PORT = process.env.PORT || 5000;
 
